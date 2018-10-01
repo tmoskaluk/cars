@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20180926185453_InitialCreate.cs" />
+    <Compile Remove="Migrations\20180926190318_InitialCreate.cs" />
+    <Compile Remove="Migrations\20180928154517_PhoneNumberNameChanged.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cars.Core.Base\Cars.Core.Base.csproj" />
+  </ItemGroup>
+
+</Project>

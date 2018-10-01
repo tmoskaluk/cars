@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20180927140352_OrderCustomerAdded.cs" />
+    <Compile Remove="Migrations\20180927140533_OrderCustomerAdded.cs" />
+    <Compile Remove="Migrations\20180928101914_OrderCommentsAdded.cs" />
+    <Compile Remove="Migrations\20180928104801_OrderListViewChanged.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Migrations\20180927231912_OrderListViewAdded_Up.sql" />
+    <None Remove="Migrations\20180928115542_OrderListViewChanged_Down.sql" />
+    <None Remove="Migrations\20180928115542_OrderListViewChanged_Up.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\20180927231912_OrderListViewAdded_Up.sql" />
+    <EmbeddedResource Include="Migrations\20180928115542_OrderListViewChanged_Down.sql" />
+    <EmbeddedResource Include="Migrations\20180928115542_OrderListViewChanged_Up.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cars.Sales.Core.Application\Cars.Sales.Core.Application.csproj" PrivateAssets="All" />
+    <ProjectReference Include="..\Cars.Sales.Core.Domain\Cars.Sales.Core.Domain.csproj" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>

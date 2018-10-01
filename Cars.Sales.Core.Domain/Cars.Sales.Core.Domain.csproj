@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Factories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cars.Core.Base\Cars.Core.Base.csproj" />
+    <ProjectReference Include="..\Cars.SharedKernel\Cars.SharedKernel.csproj" />
+  </ItemGroup>
+
+</Project>
