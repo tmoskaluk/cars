@@ -12,8 +12,8 @@ namespace Cars.Sales.Core.Domain.ValueObjects
 
         public Engine(string code, EngineType type, int capacity)
         {
-            if (string.IsNullOrWhiteSpace(code)) throw new ArgumentException(nameof(code));
-            if (capacity <= 0) throw new ArgumentException(nameof(capacity));
+            if (string.IsNullOrWhiteSpace(code)) throw new ArgumentException("Missing engine code", nameof(code));
+            if (capacity <= 0) throw new ArgumentException("Wrong engine capacity", nameof(capacity));
 
             Code = code;
             Type = type;

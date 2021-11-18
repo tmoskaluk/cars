@@ -12,9 +12,9 @@ namespace Cars.Customers.Crud
         private const string MIGRATIONS_HISTORY_TABLE = "__CustomersMigrationsHistory";
         private const string CONNECTION_STRING = @"Data Source=.\SQLEXPRESS;Initial Catalog=Cars;Integrated Security=True;MultipleActiveResultSets=True";
         public const string SCHEMA_NAME = "customers";
-        public static readonly LoggerFactory LoggerFactory = new LoggerFactory(new[] { new EntityFrameworkLogger() });
+        public static readonly LoggerFactory LoggerFactory = new(new[] { new EntityFrameworkLogger() });
 
-        public CustomersDbContext() : base()
+        public CustomersDbContext()
         {
         }
 

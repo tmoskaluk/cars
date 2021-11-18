@@ -9,7 +9,7 @@ namespace Cars.Sales.Core.Domain.Entities
     public class Order : AggregateRoot<int>
     {
         private const decimal MAXIMUM_PERCENT_DISCOUNT = 0.4M;
-        private List<OrderComment> comments = new List<OrderComment>();
+        private readonly List<OrderComment> comments = new ();
         
         public static Order Create(Offer offer, Customer customer)
         {
@@ -20,7 +20,7 @@ namespace Cars.Sales.Core.Domain.Entities
 
         public static Order Create(CarConfiguration configuration, decimal price, Customer customer)
         {
-            return new Order
+            return new()
             {
                 Configuration = configuration,
                 Customer = customer,
@@ -61,7 +61,7 @@ namespace Cars.Sales.Core.Domain.Entities
 
         public void ApplyDiscount(decimal discount)
         {
-            if (discount <= 0) throw new ArgumentException(nameof(discount));
+            if (discount <= 0) throw new ArgumentException("Wrong discount", nameof(discount));
             if (discount > OriginalPrice * MAXIMUM_PERCENT_DISCOUNT) throw new Exception("The maximum discount limit is exceeded");
             if (Status != OrderStatus.Created) throw new Exception($"Applying discount is available only for order with {OrderStatus.Created} status");
 

@@ -15,9 +15,9 @@ namespace Cars.Sales.Core.Infrastructure
         private const string CONNECTION_STRING = @"Data Source=.\SQLEXPRESS;Initial Catalog=Cars;Integrated Security=True;MultipleActiveResultSets=True";
         internal const string DB_MONEY_TYPE = "money";
         public const string SCHEMA_NAME = "sales";
-        public static readonly LoggerFactory LoggerFactory = new LoggerFactory(new[] { new EntityFrameworkLogger() });
+        public static readonly LoggerFactory LoggerFactory = new(new[] { new EntityFrameworkLogger() });
 
-        public SalesDbContext() : base()
+        public SalesDbContext()
         {
         }
 
