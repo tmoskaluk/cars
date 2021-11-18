@@ -10,7 +10,7 @@ namespace Cars.Sales.Core.Domain.Entities
     {
         private const decimal MAXIMUM_PERCENT_DISCOUNT = 0.4M;
         private List<OrderComment> comments = new List<OrderComment>();
-
+        
         public static Order Create(Offer offer, Customer customer)
         {
             if (offer.ExpirationDate < DateTime.Now) throw new Exception("Can't create order from expired offer");

@@ -32,7 +32,7 @@ namespace Cars.Sales.Core.Infrastructure.Services.Application
             this.ordersRepository.Add(order);
             this.unitOfWork.Commit();
 
-            this.logger.Info($"Order created [OrderId = {order.Id}, CustomerId = {order.Customer.CustomerId}]");
+            //this.logger.Info($"Order created [OrderId = {order.Id}, CustomerId = {order.Customer.CustomerId}]");
             return new OrderDto { OrderId = order.Id };
         }
 

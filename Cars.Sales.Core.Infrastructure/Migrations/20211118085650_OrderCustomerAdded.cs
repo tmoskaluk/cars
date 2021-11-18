@@ -10,13 +10,14 @@ namespace Cars.Sales.Core.Infrastructure.Migrations
                 name: "Customer_CustomerId",
                 schema: "sales",
                 table: "Orders",
-                nullable: false,
-                defaultValue: 0);
+                type: "int",
+                nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "Customer_Name",
                 schema: "sales",
                 table: "Orders",
+                type: "nvarchar(max)",
                 nullable: true);
         }
 

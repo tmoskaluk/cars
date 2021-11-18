@@ -14,7 +14,7 @@ namespace Cars.IntegrationTests.Sales.ReadModel
             var offersQuery = Container.GetService<IOffersQuery>();
 
             //act
-            var results = offersQuery.GetOffersList();
+            var results = offersQuery.GetOffers();
 
             //assert
             Assert.NotNull(results);

@@ -1,7 +1,7 @@
-﻿using Cars.Sales.Core.Infrastructure.Repositories;
-using Cars.SharedKernel.Sales.ViewModels;
+﻿using Cars.SharedKernel.Sales.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using Cars.Sales.Core.Infrastructure;
 
 namespace Cars.ReadModel.Sales.Implementation
 {
@@ -14,9 +14,9 @@ namespace Cars.ReadModel.Sales.Implementation
             this.context = context;
         }
 
-        public IList<OrderListViewModel> GetOrderList()
+        public IList<OrderListViewModel> GetOrders()
         {
-            return this.context.Query<OrderListViewModel>().OrderBy(x => x.CreationDate).ToList();
+            return this.context.OrderListView.OrderBy(x => x.CreationDate).ToList();
         }
     }
 }

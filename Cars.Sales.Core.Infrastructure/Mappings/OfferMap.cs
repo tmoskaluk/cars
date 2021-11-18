@@ -1,5 +1,4 @@
 ﻿using Cars.Sales.Core.Domain.Entities;
-using Cars.Sales.Core.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -11,11 +10,24 @@ namespace Cars.Sales.Core.Infrastructure.Mappings
         {
             builder.ToTable("Offers");
 
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.CreationDate).IsRequired();
-            builder.Property(x => x.TotalPrice).IsRequired().HasColumnType(SalesDbContext.DB_MONEY_TYPE);
-            builder.Property(x => x.ExpirationDate).IsRequired();
-            builder.OwnsOne(x => x.Configuration);
+            builder.HasKey(o => o.Id);
+            builder.Property(o => o.CreationDate).IsRequired();
+            builder.Property(o => o.TotalPrice).IsRequired().HasColumnType(SalesDbContext.DB_MONEY_TYPE);
+            builder.Property(o => o.ExpirationDate).IsRequired();
+            builder.OwnsOne(o => o.Configuration, o =>
+            {
+                o.OwnsOne(c => c.Engine, c =>
+                {
+                    c.Property(e => e.Type).IsRequired();
+                    c.Property(e => e.Capacity).IsRequired();
+                    c.Property(e => e.Code).IsRequired();
+                });
+                o.OwnsOne(c => c.Gearbox, c =>
+                {
+                    c.Property(g => g.Type).IsRequired();
+                    c.Property(g => g.Gears).IsRequired();
+                });
+            });
         }
     }
 }

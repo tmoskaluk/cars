@@ -1,6 +1,5 @@
 ﻿using Cars.ReadModel.Sales;
 using Cars.Sales.Core.Application;
-using Cars.Sales.Core.Infrastructure.Repositories;
 using Cars.SharedKernel.Sales.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +10,7 @@ using Cars.Sales.Core.Application.DataTransferObjects;
 using Cars.DependencyInjection;
 using Cars.Customers.Crud;
 using Cars.Customers.Crud.Entities;
+using Cars.Sales.Core.Infrastructure;
 using Cars.SharedKernel.Enums;
 
 namespace Cars.ConsoleApp
@@ -99,11 +99,10 @@ namespace Cars.ConsoleApp
 
         private static void RunTest(IServiceScopeFactory scopeFactory)
         {
-
             using (var scope = scopeFactory.CreateScope())
             {
                 var offersQuery = scope.ServiceProvider.GetService<IOffersQuery>();
-                Console.WriteLine($"Offers count: {offersQuery.GetOffersList().Count()}{Environment.NewLine}");
+                Console.WriteLine($"Offers count: {offersQuery.GetOffers().Count}{Environment.NewLine}");
             }
 
             OfferDto offer;
@@ -125,7 +124,7 @@ namespace Cars.ConsoleApp
             using (var scope = scopeFactory.CreateScope())
             {
                 var offersQuery = scope.ServiceProvider.GetService<IOffersQuery>();
-                DisplayOffers(offersQuery.GetOffersList().ToList());
+                DisplayOffers(offersQuery.GetOffers());
             }
 
             #region Choosing customer
@@ -172,7 +171,7 @@ namespace Cars.ConsoleApp
             using (var scope = scopeFactory.CreateScope())
             {
                 var ordersQuery = scope.ServiceProvider.GetRequiredService<IOrdersQuery>();
-                DisplayOrders(ordersQuery.GetOrderList());
+                DisplayOrders(ordersQuery.GetOrders());
             }
         }
     }

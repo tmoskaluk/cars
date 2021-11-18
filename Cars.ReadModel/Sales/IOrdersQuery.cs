@@ -5,6 +5,6 @@ namespace Cars.ReadModel.Sales
 {
     public interface IOrdersQuery
     {
-        IList<OrderListViewModel> GetOrderList();
+        IList<OrderListViewModel> GetOrders();
     }
 }

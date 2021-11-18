@@ -4,14 +4,16 @@ using Cars.Sales.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cars.Sales.Core.Infrastructure.Migrations
 {
     [DbContext(typeof(SalesDbContext))]
-    partial class SalesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211118085350_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,35 +94,6 @@ namespace Cars.Sales.Core.Infrastructure.Migrations
                     b.HasIndex("OrderId");
 
                     b.ToTable("OrderComments");
-                });
-
-            modelBuilder.Entity("Cars.SharedKernel.Sales.ViewModels.OrderListViewModel", b =>
-                {
-                    b.Property<int>("Comments")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CustomerName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Discount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.ToView("OrderListView");
                 });
 
             modelBuilder.Entity("Cars.Sales.Core.Domain.Entities.Offer", b =>
@@ -272,30 +245,7 @@ namespace Cars.Sales.Core.Infrastructure.Migrations
                             b1.Navigation("Gearbox");
                         });
 
-                    b.OwnsOne("Cars.Sales.Core.Domain.ValueObjects.Customer", "Customer", b1 =>
-                        {
-                            b1.Property<int>("OrderId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("CustomerId")
-                                .HasColumnType("int");
-
-                            b1.Property<string>("Name")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("OrderId");
-
-                            b1.ToTable("Orders");
-
-                            b1.WithOwner()
-                                .HasForeignKey("OrderId");
-                        });
-
                     b.Navigation("Configuration");
-
-                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("Cars.Sales.Core.Domain.Entities.OrderComment", b =>

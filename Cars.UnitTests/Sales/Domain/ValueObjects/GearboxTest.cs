@@ -1,9 +1,9 @@
-﻿using Cars.Sales.Core.Domain.ValueObjects;
+﻿using System;
+using Cars.Sales.Core.Domain.ValueObjects;
 using Cars.SharedKernel.Enums;
 using NUnit.Framework;
-using System;
 
-namespace Cars.Tests.UnitTests.Sales.Domain.ValueObjects
+namespace Cars.UnitTests.Sales.Domain.ValueObjects
 {
     [TestFixture]
     public class GearboxTest

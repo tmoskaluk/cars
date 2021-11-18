@@ -1,5 +1,4 @@
-﻿using Cars.Sales.Core.Infrastructure.Repositories;
-using Cars.SharedKernel.Migrations;
+﻿using Cars.SharedKernel.Migrations;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Cars.Sales.Core.Infrastructure.Migrations

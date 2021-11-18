@@ -1,10 +1,10 @@
-﻿using Cars.Sales.Core.Domain.Entities;
+﻿using System;
+using Cars.Sales.Core.Domain.Entities;
 using Cars.Sales.Core.Domain.ValueObjects;
 using Cars.SharedKernel.Enums;
 using NUnit.Framework;
-using System;
 
-namespace Cars.Tests.UnitTests.Sales.Domain.Entities
+namespace Cars.UnitTests.Sales.Domain.Entities
 {
     [TestFixture]
     public class OfferTest

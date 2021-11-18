@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Cars.Sales.Core.Infrastructure.Repositories;
+using Cars.Sales.Core.Infrastructure;
 using Cars.SharedKernel.Sales.ViewModels;
 
 namespace Cars.ReadModel.Sales.Implementation
@@ -14,7 +14,7 @@ namespace Cars.ReadModel.Sales.Implementation
             this.context = context;
         }
 
-        public IList<OfferListViewModel> GetOffersList()
+        public IList<OfferListViewModel> GetOffers()
         {
             return this.context.Offers.Select(o => new OfferListViewModel { OfferId = o.Id, CreationDate = o.CreationDate, TotalPrice = o.TotalPrice })
                                       .OrderBy(o => o.CreationDate)

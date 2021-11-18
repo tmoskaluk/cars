@@ -1,6 +1,5 @@
 ﻿using Cars.Core.Base.UnitOfWork;
 using Cars.Sales.Core.Domain;
-using Cars.Sales.Core.Infrastructure.Repositories;
 
 namespace Cars.Sales.Core.Infrastructure
 {

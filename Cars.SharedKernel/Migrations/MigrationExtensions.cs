@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Cars.SharedKernel.Migrations
 {

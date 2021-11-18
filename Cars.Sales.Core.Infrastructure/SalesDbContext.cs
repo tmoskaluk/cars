@@ -1,13 +1,13 @@
-﻿using Cars.Core.Base.Log;
+﻿using System.Reflection;
+using Cars.Core.Base.Log;
 using Cars.Sales.Core.Domain.Entities;
 using Cars.Sales.Core.Infrastructure.Mappings;
 using Cars.SharedKernel.Sales.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Logging;
-using System.Reflection;
 
-namespace Cars.Sales.Core.Infrastructure.Repositories
+namespace Cars.Sales.Core.Infrastructure
 {
     public class SalesDbContext : DbContext
     {
@@ -38,20 +38,23 @@ namespace Cars.Sales.Core.Infrastructure.Repositories
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.HasDefaultSchema(SCHEMA_NAME);
-            modelBuilder.ApplyConfiguration(new CarConfigurationMap());
-            modelBuilder.ApplyConfiguration(new CustomerMap());
-            modelBuilder.ApplyConfiguration(new EngineMap());
-            modelBuilder.ApplyConfiguration(new GearboxMap());
+
             modelBuilder.ApplyConfiguration(new OfferMap());
             modelBuilder.ApplyConfiguration(new OrderMap());
             modelBuilder.ApplyConfiguration(new OrderCommentMap());
 
-            modelBuilder.Query<OrderListViewModel>().ToView("OrderListView");
+            modelBuilder.Entity<OrderListViewModel>(e =>
+            {
+                e.HasNoKey();
+                e.ToView("OrderListView");
+            });
         }
 
         public DbSet<Offer> Offers { get; set; }
 
         public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderListViewModel> OrderListView { get; set; }
     }
 
     public class SalesDbContextFactory : IDesignTimeDbContextFactory<SalesDbContext>

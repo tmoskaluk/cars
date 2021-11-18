@@ -18,7 +18,7 @@ namespace Cars.IntegrationTests.Sales.Application.Services
             var ordersQuery = Container.GetRequiredService<IOrdersQuery>();
 
             //act
-            var orders = ordersQuery.GetOrderList();
+            var orders = ordersQuery.GetOrders();
 
             //assert
             Assert.NotNull(orders);
@@ -31,7 +31,7 @@ namespace Cars.IntegrationTests.Sales.Application.Services
             var ordersService = Container.GetRequiredService<IOrdersApplicationService>();
             var ordersQuery = Container.GetRequiredService<IOrdersQuery>();
             var ordersRepository = Container.GetRequiredService<IOrdersRepository>();
-            var orderViewModel = ordersQuery.GetOrderList().LastOrDefault();
+            var orderViewModel = ordersQuery.GetOrders().LastOrDefault();
 
             if (orderViewModel == null) throw new Exception("Can't find any order. Test cannot be performed!");
             var discount = orderViewModel.Price * 0.1M;
